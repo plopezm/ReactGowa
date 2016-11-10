@@ -1,0 +1,141 @@
+/**
+* GRID
+**/
+
+.container {
+    width: 100%;
+    display: flex;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.colleft{
+    order: 0;
+}
+
+.colcenter{
+    order: 1;
+}
+
+.colright{
+    order: 2;
+
+}
+
+.alignright{
+    text-align: right;
+}
+
+.aligncenter{
+    text-align: center;
+}
+
+.alignleft{
+    text-align: left;
+}
+
+/** ======================================
+*           Column sizes
+**  ====================================== */
+.col10{
+    width: 10vw;
+}
+
+.col12{
+    width: 12vw;
+}
+
+.col20{
+    width: 20%;
+}
+
+.col30{
+    width: 30%;
+}
+
+.col40{
+    width: 40%;
+}
+
+.col50{
+    width: 50%;
+}
+
+.col60{
+    width: 60%;
+}
+
+.col70{
+    width: 70%;
+}
+
+.col80{
+    width: 80%;
+}
+
+.col88{
+    width: 88vw;
+}
+
+.col90{
+    width: 90%;
+}
+
+.col100{
+    width: 100%;
+}
+
+/**===========================================
+    Show or hide depends on device width
+===========================================**/
+.hide{
+    display: none;
+}
+
+.hideXSscreen{
+    display: block;
+}
+.hideSscreen{
+    display: block;
+}
+.hideMscreen{
+    display: block;
+}
+.hideLscreen{
+    display: block;
+}
+.hideXLscreen{
+    display: block;
+}
+
+@media screen and (min-width: 0px) and (max-width: 350px){
+    .hideXSscreen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 350px) and (max-width: 600px){
+    .hideSscreen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 600px) and (max-width: 960px){
+    .hideMscreen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 960px) and (max-width: 1250px){
+    .hideLscreen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1250px){
+    .hideXLscreen{
+        display: none;
+    }
+}
