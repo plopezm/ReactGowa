@@ -37,7 +37,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
-    color: #f1f1f1;
+    color: #1d1d1d;
 }
 
 hr {

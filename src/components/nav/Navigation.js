@@ -46,7 +46,11 @@ class Navigation extends React.Component {
                         <li key={this.props.menuMain.title}  className={`${grid.colleft} ${grid.aligncenter}`}>
                             <a href={this.props.menuMain.href} className=""><strong>{this.props.menuMain.title}</strong></a>
                         </li>
-                        {this.renderLinks(`${grid.colright} ${grid.aligncenter} ${grid.hideXSscreen} ${grid.hideSscreen}`)}
+                        <li className={`${grid.container} ${grid.col100} ${grid.right} ${grid.hideXSscreen} ${grid.hideSscreen}`} >
+                            <ul className={`${grid.container} ${grid.col100} ${grid.right}`}>
+                                {this.renderLinks(`${grid.aligncenter} ${grid.hideXSscreen} ${grid.hideSscreen}`)}
+                            </ul>
+                        </li>
                     </ul>
                 </nav>
                 <aside id="navigation-sidenav" className={`w3-card-2 ${styles.sidenav}`}>
