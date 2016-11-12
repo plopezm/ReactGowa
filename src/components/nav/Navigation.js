@@ -1,24 +1,27 @@
 import React from 'react';
 
-import grid from '../../../style/Grid.css'
+import grid from '../Grid.css'
 import styles from './Navigation.css';
 
 class Navigation extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { toggle: false };
 
-        this.showSideNav = this.showSideNav.bind(this);
+        this.toggleSideNav = this.toggleSideNav.bind(this);
     }
 
     componentDidMount() {
         // Called the first time the component is loaded right before the component is added to the page
     }
 
-    showSideNav(toggle){
-        if(toggle){
-            document.getElementById("navigation-sidenav").style.width = "65vw";
+    toggleSideNav(){
+        if(!this.state.toggle){
+            document.getElementById("navigation-sidenav").style.width = "60vw";
+            this.setState({ toggle: true });
         }else{
             document.getElementById("navigation-sidenav").style.width = "0";
+            this.setState({ toggle: false });
         }
     }
 
@@ -36,31 +39,31 @@ class Navigation extends React.Component {
         return (
             <header>
                 <nav>
-                    <ul id="navigation-topnav" className={`w3-navbar w3-card-2 w3-wide ${grid.container}`}>
+                    <ul id="navigation-topnav" className={`${styles.navbar} ${styles.navbar_menu} ${grid.card_2} ${grid.text_wide} ${grid.container} ${grid.wrap}`}>
 
-                        <li className={`${grid.colleft} ${grid.col12} ${grid.aligncenter} ${grid.hideMscreen} ${grid.hideLscreen} ${grid.hideXLscreen}`}>
+                        <li className={`${grid.colleft} ${grid.aligncenter} ${styles.auto_margin} ${grid.hideLscreen} ${grid.hideXLscreen}`}>
                             <a href="javascript:void(0);"
-                               onClick={() => this.showSideNav(true)}
+                               onClick={() => this.toggleSideNav()}
                                className="">☰</a>
                         </li>
-                        <li key={this.props.menuMain.title}  className={`${grid.colleft} ${grid.aligncenter}`}>
+                        <li className={`${grid.colleft} ${grid.alignleft} ${styles.auto_margin}`}>
                             <a href={this.props.menuMain.href} className=""><strong>{this.props.menuMain.title}</strong></a>
                         </li>
-                        <li className={`${grid.container} ${grid.col100} ${grid.right} ${grid.hideXSscreen} ${grid.hideSscreen}`} >
-                            <ul className={`${grid.container} ${grid.col100} ${grid.right}`}>
-                                {this.renderLinks(`${grid.aligncenter} ${grid.hideXSscreen} ${grid.hideSscreen}`)}
+                        <li className={`${grid.container} ${grid.hideXSscreen} ${grid.hideSscreen} ${grid.hideMscreen}`} >
+                            <ul className={`${grid.container} ${grid.wrap}`}>
+                                {this.renderLinks(`${grid.aligncenter} ${grid.hideXSscreen} ${grid.hideSscreen}  ${grid.hideMscreen}`)}
                             </ul>
                         </li>
                     </ul>
                 </nav>
-                <aside id="navigation-sidenav" className={`w3-card-2 ${styles.sidenav}`}>
-                    <div className={`${grid.container}`}>
-                        <a className={`${grid.col12} ${styles.menuButtonMenu}`} href="javascript:void(0)" onClick={() => this.showSideNav(false)}>☰</a>
-                        <h4 className={`${grid.col88} ${styles.menuButtonMenu}`} >Menu</h4>
-                    </div>
+                <aside id="navigation-sidenav" className={`${grid.card_2} ${styles.sidenav}`}>
+                    {/*<div className={`${grid.container}`}>*/}
+                        {/*<a className={`${styles.menuButtonMenu}`} href="javascript:void(0)" onClick={() => this.toggleSideNav()}>☰</a>*/}
+                        {/*<h4 className={`${grid.col88} ${grid.alignleft} ${styles.menuButtonMenu}`} >Menu</h4>*/}
+                    {/*</div>*/}
                     <hr/>
-                    <ul className={`w3-navbar`}>
-                    {this.renderLinks(undefined, `${styles.sidelink}`)}
+                    <ul className={`${styles.navbar} ${styles.navbar_menu}`}>
+                    {this.renderLinks(`${grid.col100}`, `${grid.alignleft} ${styles.sidelink}`)}
                     </ul>
                 </aside>
 

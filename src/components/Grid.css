@@ -1,16 +1,74 @@
+html {
+    box-sizing: border-box
+}
+
+*, *:before, *:after {
+    box-sizing: inherit
+}
+
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
+}
+
+body {
+    margin: 0
+}
+
+/**
+* Text Styles
+**/
+.text_wide{
+    letter-spacing: 4px;
+}
+
+/**
+* CARDS
+**/
+.card {
+    border: 1px solid #ccc
+}
+
+.card_2 {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important
+}
+
+.card_4 {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important
+}
+
+.card_8 {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important
+}
+
+.card_12 {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19) !important
+}
+
+.card_16 {
+    box-shadow: 0 16px 24px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21) !important
+}
+
+.card_24 {
+    box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22) !important
+}
+
+
 /**
 * GRID
 **/
-
 .container {
-    width: 100%;
     display: flex;
     justify-content: flex-start;
 }
 
-
-.right:nth-child(n+1){
+.right{
     justify-content: flex-end;
+}
+
+.left{
+    justify-content: flex-start;
 }
 
 .wrap {

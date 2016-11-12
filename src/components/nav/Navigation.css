@@ -1,13 +1,74 @@
-.menu_right{
-    flex-direction: row-reverse;
+/**
+* NAVBAR
+**/
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden
 }
 
+
+.navbar li a {
+    display: block;
+    padding: 8px 16px
+}
+
+.navbar li a:hover {
+    color: #000;
+    background-color: #ccc
+}
+
+.navbar{
+    position: static
+}
+
+.navbar a{
+    text-decoration: none !important;
+    -webkit-transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s, filter 0.3s;
+    transition: background-color .3s, color .15s, box-shadow .3s, opacity 0.3s, filter 0.3s
+}
+
+.navbar a:link {
+    text-decoration: none;
+}
+
+.navbar a:visited {
+    color: black;
+}
+
+.navbar a:link{
+    color: black;
+}
+
+.navbar_menu ul {
+    font-size: 18px;
+    padding: 12px;
+    vertical-align: middle;
+}
+
+/**
+* Special Margins
+**/
+.auto_margin{
+    margin: 2vw 0 2vw 0;
+}
+
+@media screen and (min-width: 960px) {
+    .auto_margin {
+        margin: auto 0 auto 0;
+    }
+}
+
+/**
+* SIDENAV
+**/
 .sidenav {
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 1; /* Stay on top */
-    top: 0;
+    /*top: 0;*/
     left: 0;
     background-color: white; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
@@ -23,7 +84,6 @@
 
 .menuTitleMenu {
     text-decoration: none;
-    margin-left: 30px;
 }
 
 /* The navigation menu links */
@@ -32,7 +92,7 @@
     text-decoration: none;
     font-size: 20px;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
 /* When you mouse over the navigation links, change their color */
