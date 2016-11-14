@@ -1,6 +1,5 @@
 import React from 'react';
 
-import grid from '../Grid.css'
 import styles from './Navigation.css';
 
 class Navigation extends React.Component {
@@ -28,8 +27,8 @@ class Navigation extends React.Component {
     renderLinks(liclasses = "", aclasses = ""){
         return this.props.menuItems.map((item) => {
             return (
-                <li key={item.title} className={liclasses}>
-                    <a href={item.href} className={aclasses} target={item.target}>{item.title}</a>
+                <li key={item.title} className={`${liclasses}`}>
+                    <a href={item.href} className={`${aclasses}`} target={item.target}>{item.title}</a>
                 </li>
             );
         });
@@ -39,31 +38,31 @@ class Navigation extends React.Component {
         return (
             <header>
                 <nav>
-                    <ul id="navigation-topnav" className={`${styles.navbar} ${styles.navbar_menu} ${grid.card_2} ${grid.text_wide} ${grid.container} ${grid.wrap}`}>
+                    <ul id="navigation-topnav" className={`navbar navbar_menu card_2 text_wide container wrap ${this.props.theme}`}>
 
-                        <li className={`${grid.colleft} ${grid.aligncenter} ${styles.auto_margin} ${grid.hideLscreen} ${grid.hideXLscreen}`}>
+                        <li className={`colleft aligncenter ${styles.auto_margin} hideLscreen hideXLscreen`}>
                             <a href="javascript:void(0);"
                                onClick={() => this.toggleSideNav()}
-                               className="">☰</a>
+                               className={`${this.props.textColor}`}>☰</a>
                         </li>
-                        <li className={`${grid.colleft} ${grid.alignleft} ${styles.auto_margin}`}>
-                            <a href={this.props.menuMain.href} className=""><strong>{this.props.menuMain.title}</strong></a>
+                        <li className="autoMarginHeigth colleft alignleft">
+                            <a href={this.props.menuMain.href} className={`${this.props.textColor}`}><strong>{this.props.menuMain.title}</strong></a>
                         </li>
-                        <li className={`${grid.container} ${grid.hideXSscreen} ${grid.hideSscreen} ${grid.hideMscreen}`} >
-                            <ul className={`${grid.container} ${grid.wrap}`}>
-                                {this.renderLinks(`${grid.aligncenter} ${grid.hideXSscreen} ${grid.hideSscreen}  ${grid.hideMscreen}`)}
+                        <li className="container hideXSscreen hideSscreen hideMscreen" >
+                            <ul className="container wrap">
+                                {this.renderLinks("aligncenter hideXSscreen hideSscreen  hideMscreen", `${this.props.textColor}`)}
                             </ul>
                         </li>
                     </ul>
                 </nav>
-                <aside id="navigation-sidenav" className={`${grid.card_2} ${styles.sidenav}`}>
+                <aside id="navigation-sidenav" className="card_2 sidenav">
                     {/*<div className={`${grid.container}`}>*/}
-                        {/*<a className={`${styles.menuButtonMenu}`} href="javascript:void(0)" onClick={() => this.toggleSideNav()}>☰</a>*/}
-                        {/*<h4 className={`${grid.col88} ${grid.alignleft} ${styles.menuButtonMenu}`} >Menu</h4>*/}
+                    {/*<a className={`${styles.menuButtonMenu}`} href="javascript:void(0)" onClick={() => this.toggleSideNav()}>☰</a>*/}
+                    {/*<h4 className={`${grid.col88} ${grid.alignleft} ${styles.menuButtonMenu}`} >Menu</h4>*/}
                     {/*</div>*/}
                     <hr/>
-                    <ul className={`${styles.navbar} ${styles.navbar_menu}`}>
-                    {this.renderLinks(`${grid.col100}`, `${grid.alignleft} ${styles.sidelink}`)}
+                    <ul className="navbar navbar_menu">
+                        {this.renderLinks("col100", "alignleft sidelink")}
                     </ul>
                 </aside>
 

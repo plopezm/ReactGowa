@@ -16,11 +16,21 @@ export default class App extends Component {
         super(props);
     }
 
+    getChildContext() {
+        return {appName: "Gowa"};
+    }
+
     render() {
         return (
             <div>
                 <Navigation menuMain={menuMain} menuItems={menuItems}/>
+
+                { this.props.children }
             </div>
         );
     }
 }
+
+App.childContextTypes = {
+    appName: React.PropTypes.string
+};
