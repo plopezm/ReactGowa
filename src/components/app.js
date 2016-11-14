@@ -7,7 +7,6 @@ const menuMain = {
 }
 
 const menuItems = [
-    { title: "Other", href: "https://github.com/plopezm/gowa", target: "_blank"},
     { title: "Github", href: "https://github.com/plopezm/gowa", target: "_blank"}
 ];
 
