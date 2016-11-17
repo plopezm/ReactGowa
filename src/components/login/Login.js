@@ -19,16 +19,11 @@ class Login extends React.Component {
         appName: React.PropTypes.string
     }
 
-
     componentWillMount() {
         // Called the first time the component is loaded right before the component is added to the page
         if(this.props.auth.isAuth){
             browserHistory.push('/home');
         }
-    }
-
-    componentDidMount() {
-        // Called after the component has been rendered into the page
     }
 
     componentWillReceiveProps(nextProps) {
@@ -37,14 +32,6 @@ class Login extends React.Component {
         if(nextProps.auth.isAuth){
             browserHistory.push('/home');
         }
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-        // Called when the props and/or state change
-    }
-
-    componentWillUnmount() {
-        // Called when the component is removed
     }
 
     handleUser(e){

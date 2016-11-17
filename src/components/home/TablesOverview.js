@@ -29,8 +29,8 @@ class TablesOverview extends React.Component {
 
     render() {
         return (
-            <section>
-                <table>
+            <section className="container col88 padding16 autoMargin">
+                <table className="card_2">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -38,6 +38,18 @@ class TablesOverview extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>T1</td>
+                            <td>Example details</td>
+                        </tr>
+                        <tr>
+                            <td>T1</td>
+                            <td>Example details</td>
+                        </tr>
+                        <tr>
+                            <td>T1</td>
+                            <td>Example details</td>
+                        </tr>
                         <tr>
                             <td>T1</td>
                             <td>Example details</td>
