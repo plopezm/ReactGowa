@@ -1,4 +1,6 @@
 import React from 'react';
+import requireAuth from '../auth/RequireAuth';
+
 
 class TablesOverview extends React.Component {
     constructor(props) {
@@ -30,8 +32,10 @@ class TablesOverview extends React.Component {
             <section>
                 <table>
                     <thead>
-                        <th>Name</th>
-                        <th>Details</th>
+                        <tr>
+                            <th>Name</th>
+                            <th>Details</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -45,4 +49,4 @@ class TablesOverview extends React.Component {
     }
 }
 
-export default TablesOverview;
+export default requireAuth(TablesOverview);

@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
+import {authenticate} from '../../actions/index';
 
 import styles from './Login.css';
 
@@ -6,6 +9,10 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+
+        this.handleUser = this.handleUser.bind(this);
+        this.handlePassword = this.handlePassword.bind(this);
+        this.onPushSubmit = this.onPushSubmit.bind(this);
     }
 
     static contextTypes = {
@@ -15,6 +22,9 @@ class Login extends React.Component {
 
     componentWillMount() {
         // Called the first time the component is loaded right before the component is added to the page
+        if(this.props.auth.isAuth){
+            browserHistory.push('/home');
+        }
     }
 
     componentDidMount() {
@@ -23,6 +33,10 @@ class Login extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         // Called when the props provided to the component are changed
+        console.log(nextProps)
+        if(nextProps.auth.isAuth){
+            browserHistory.push('/home');
+        }
     }
 
     componentWillUpdate(nextProps, nextState) {
@@ -33,16 +47,21 @@ class Login extends React.Component {
         // Called when the component is removed
     }
 
+    handleUser(e){
+        this.setState({user: e.target.value});
+    }
+
+    handlePassword(e){
+        this.setState({password: e.target.value});
+    }
+
     onPushSubmit(e){
         e.preventDefault();
-
-
+        this.props.authenticate(true);
     }
 
     render() {
-
-        console.log(this.context);
-
+        // console.log(this.context);
         return (
             <div className={`col88 fullHeight card_4 padding16 ${styles.loginBoxMargin} ${styles.size}`}>
                 <header>
@@ -52,8 +71,8 @@ class Login extends React.Component {
                     <form className="container wrap input_group" onSubmit={this.onPushSubmit}>
 
                         <hr/>
-                        <input className="col100" type="text" placeholder="Username" />
-                        <input className="col100 input_control" type="password" placeholder="Password"/>
+                        <input className="col100" type="text" onChange={this.handleUser} placeholder="Username" />
+                        <input className="col100 input_control" onChange={this.handlePassword} type="password" placeholder="Password"/>
                         <div className="fullWidth">
                             <input type="submit" className="fullWidth button_green" value="Sign in" />
                         </div>
@@ -64,4 +83,8 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+function mapStateToProps(state) {
+    return {auth: state.auth};
+}
+
+export default connect(mapStateToProps, {authenticate})(Login);
