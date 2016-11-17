@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import {authenticate} from '../../actions/index';
+import { authenticate } from '../../actions/index';
 
 import styles from './Login.css';
 
@@ -28,7 +28,6 @@ class Login extends React.Component {
 
     componentWillReceiveProps(nextProps) {
         // Called when the props provided to the component are changed
-        console.log(nextProps)
         if(nextProps.auth.isAuth){
             browserHistory.push('/home');
         }
@@ -44,7 +43,7 @@ class Login extends React.Component {
 
     onPushSubmit(e){
         e.preventDefault();
-        this.props.authenticate(true);
+        this.props.authenticate(this.state.user, this.state.password);
     }
 
     render() {

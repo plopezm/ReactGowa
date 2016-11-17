@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-
 import Navigation from './nav/Navigation';
+import { connect } from 'react-redux';
+
+import { validate } from '../actions/index';
 
 const menuMain = {
     title: "Gowa", href: "#"
@@ -10,9 +12,14 @@ const menuItems = [
     { title: "Github", href: "https://github.com/plopezm/gowa", target: "_blank"}
 ];
 
-export default class App extends Component {
+
+class App extends Component {
     constructor(props){
         super(props);
+    }
+
+    componentWillMount(){
+        this.props.validate();
     }
 
     getChildContext() {
@@ -30,6 +37,9 @@ export default class App extends Component {
     }
 }
 
+//Declaring context variables
 App.childContextTypes = {
     appName: React.PropTypes.string
 };
+
+export default connect(null, { validate })(App);

@@ -1,8 +1,79 @@
-import { SIGN_IN } from './Types';
+import axios from 'axios';
+import { SIGN_IN, SIGN_OUT, VALIDATE_SESSION, FETCH_TABLES } from './Types';
 
-export function authenticate(isLoggedIn = false){
-    return{
-        type: SIGN_IN,
-        payload: isLoggedIn
+const API_URL = "http://localhost:8000/gowa/api";
+
+export function validate(){
+    const request = axios({
+        method: 'get',
+        url: `${API_URL}/validate`
+    });
+
+    return (dispatch) => {
+        request
+            .then(
+            (response) => {
+                const auth = {
+                    isAuth: true,
+                    token: ''
+                };
+                dispatch({type: VALIDATE_SESSION, payload: auth});
+            })
+            .catch((err) => {
+                const auth = {
+                    isAuth: false,
+                    token: ''
+                };
+                dispatch({type: VALIDATE_SESSION, payload: auth});
+            });
     }
+}
+
+
+export function authenticate(user, passwd){
+    const request = axios({
+        method: 'get',
+        url: `${API_URL}/login`,
+        auth: {
+            username: user,
+            password: passwd
+        }
+    });
+
+    return (dispath) => {
+        request
+            .then(({data}) => {
+                const auth = {
+                    isAuth: true,
+                    token: ''
+                };
+                dispath({type: SIGN_IN, payload: auth});
+            })
+            .catch(() => {
+                const auth = {
+                    isAuth: false,
+                    token: ''
+                }
+                dispath({type: SIGN_IN, payload: auth});
+            });
+    };
+}
+
+export function fetchTables(){
+    const request = axios({
+        method: 'get',
+        url: `${API_URL}/rest/tables`
+    });
+
+    return (dispath) => {
+        request
+            .then(({data}) => {
+                dispath({type: FETCH_TABLES, payload: data})
+            })
+            .catch();
+    }
+
+
+
+
 }
