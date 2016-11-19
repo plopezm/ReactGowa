@@ -1,7 +1,7 @@
 import {SIGN_IN, SIGN_OUT, VALIDATE_SESSION} from '../actions/Types';
 import axios from 'axios';
 
-const INITIAL_STATE = { isAuth: false, token:'' };
+const INITIAL_STATE = { isAuth: true, token:'' };
 
 export default function (state = INITIAL_STATE, action) {
     switch (action.type) {

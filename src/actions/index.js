@@ -21,11 +21,7 @@ export function validate(){
                 dispatch({type: VALIDATE_SESSION, payload: auth});
             })
             .catch((err) => {
-                const auth = {
-                    isAuth: false,
-                    token: ''
-                };
-                dispatch({type: VALIDATE_SESSION, payload: auth});
+                dispath({type: SIGN_OUT});
             });
     }
 }
@@ -52,11 +48,7 @@ export function authenticate(user, passwd){
                 dispath({type: SIGN_IN, payload: auth});
             })
             .catch(() => {
-                const auth = {
-                    isAuth: false,
-                    token: ''
-                }
-                dispath({type: SIGN_IN, payload: auth});
+                dispath({type: SIGN_OUT});
             });
     };
 }
@@ -71,6 +63,7 @@ export function fetchTables(){
     return (dispath) => {
         request
             .then(({data}) => {
+                console.log(data);
                 dispath({type: FETCH_TABLES, payload: data});
             })
             .catch(() => {

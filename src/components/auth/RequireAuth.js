@@ -14,7 +14,6 @@ export default function(ComposedComponent){
 
         constructor(props){
             super(props);
-            this.props.validate();
         }
 
         componentWillMount() {

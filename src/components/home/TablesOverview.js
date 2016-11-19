@@ -32,9 +32,32 @@ class TablesOverview extends React.Component {
         // Called when the component is removed
     }
 
-    render() {
-        console.log(this.props.tables)
+    renderRowStruct(columns){
+        return columns.map((col, i) => {
+            if(i == 0){
+                return `${col}`;
+            }else{
+                return `, ${col}`;
+            }
+        });
+    }
 
+    renderTables(){
+        if(!this.props.tables){
+            return;
+        }
+        return this.props.tables.map((table) => {
+            return (
+                <tr key={table.title}>
+                    <td>{table.title}</td>
+                    <td>{this.renderRowStruct(table.columns)}</td>
+                </tr>
+            );
+        });
+
+    }
+
+    render() {
         return (
             <section className="container padding16 autoMargin">
                 <table className="card_2">
@@ -45,22 +68,7 @@ class TablesOverview extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>T1</td>
-                            <td>Example details</td>
-                        </tr>
-                        <tr>
-                            <td>T1</td>
-                            <td>Example details</td>
-                        </tr>
-                        <tr>
-                            <td>T1</td>
-                            <td>Example details</td>
-                        </tr>
-                        <tr>
-                            <td>T1</td>
-                            <td>Example details</td>
-                        </tr>
+                    {this.renderTables()}
                     </tbody>
                 </table>
             </section>
@@ -69,7 +77,7 @@ class TablesOverview extends React.Component {
 }
 
 function mapStateToProps(state){
-    return { tables: state.tables };
+    return { tables: state.tables.all };
 }
 
 export default requireAuth(connect(mapStateToProps, {fetchTables})(TablesOverview));
