@@ -1,4 +1,7 @@
-# React-boilerplate
+# ReactGowa
+
+A web interface for Gowa (Admin manager module for Go).
+Gowa project can be found at https://github.com/plopezm/gowa
 
 ###Getting Started###
 
