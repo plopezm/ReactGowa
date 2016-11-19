@@ -6,7 +6,8 @@ const API_URL = "http://localhost:8000/gowa/api";
 export function validate(){
     const request = axios({
         method: 'get',
-        url: `${API_URL}/validate`
+        url: `${API_URL}/validate`,
+        withCredentials: true
     });
 
     return (dispatch) => {
@@ -37,12 +38,13 @@ export function authenticate(user, passwd){
         auth: {
             username: user,
             password: passwd
-        }
+        },
+        withCredentials: true
     });
 
     return (dispath) => {
         request
-            .then(({data}) => {
+            .then((response) => {
                 const auth = {
                     isAuth: true,
                     token: ''
