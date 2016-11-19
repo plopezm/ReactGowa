@@ -9,7 +9,7 @@ export default function (state = INITIAL_STATE, action) {
         case SIGN_IN:
             return { ...state, isAuth: action.payload.isAuth };
         case SIGN_OUT:
-            return { ...state, isAuth: action.payload.isAuth };
+            return { ...state, isAuth: false };
         default:
             return state;
     }

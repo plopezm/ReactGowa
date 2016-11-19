@@ -5,10 +5,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 
+import {validate} from '../../actions/index';
+
 
 export default function(ComposedComponent){
 
     class Authentication extends Component{
+
+        constructor(props){
+            super(props);
+            this.props.validate();
+        }
+
         componentWillMount() {
             if(!this.props.auth.isAuth) {
                 browserHistory.push("/login");
@@ -30,5 +38,5 @@ export default function(ComposedComponent){
         return { auth: state.auth };
     }
 
-    return connect(mapStateToProps)(Authentication);
+    return connect(mapStateToProps, { validate })(Authentication);
 }

@@ -33,6 +33,8 @@ class TablesOverview extends React.Component {
     }
 
     render() {
+        console.log(this.props.tables)
+
         return (
             <section className="container padding16 autoMargin">
                 <table className="card_2">
@@ -70,4 +72,4 @@ function mapStateToProps(state){
     return { tables: state.tables };
 }
 
-export default connect(mapStateToProps, {fetchTables})(requireAuth(TablesOverview));
+export default requireAuth(connect(mapStateToProps, {fetchTables})(TablesOverview));

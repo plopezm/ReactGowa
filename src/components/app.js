@@ -19,7 +19,7 @@ class App extends Component {
     }
 
     componentWillMount(){
-        this.props.validate();
+        // this.props.validate();
     }
 
     getChildContext() {

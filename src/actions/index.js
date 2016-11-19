@@ -64,15 +64,18 @@ export function authenticate(user, passwd){
 export function fetchTables(){
     const request = axios({
         method: 'get',
-        url: `${API_URL}/rest/tables`
+        url: `${API_URL}/rest/tables`,
+        withCredentials: true
     });
 
     return (dispath) => {
         request
             .then(({data}) => {
-                dispath({type: FETCH_TABLES, payload: data})
+                dispath({type: FETCH_TABLES, payload: data});
             })
-            .catch();
+            .catch(() => {
+                dispath({type: SIGN_OUT});
+            });
     }
 
 
