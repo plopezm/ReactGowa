@@ -30,7 +30,6 @@ class App extends Component {
         return (
             <div>
                 <Navigation menuMain={menuMain} menuItems={menuItems}/>
-
                 { this.props.children }
             </div>
         );

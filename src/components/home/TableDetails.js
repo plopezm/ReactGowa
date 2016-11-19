@@ -40,7 +40,6 @@ class TableDetails extends React.Component {
 
     renderRows(){
         return this.props.table.rows.map((row, i) => {
-            console.log(row)
             const tds = Object.keys(row).map((title, j) => {
                 return (
                     <td key={j}>
@@ -58,14 +57,12 @@ class TableDetails extends React.Component {
     }
 
     render() {
-        console.log("Showing table: ",this.props.table);
         if(!this.props.table){
             return <section></section>
         }
 
-
         return (
-            <section className="padding16 autoMargin">
+            <section className="container wrap padding16 autoMargin">
                 <h2>Showing table { this.props.params.id }</h2>
                 <table className="card_2">
                     <thead>
