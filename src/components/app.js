@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { validate } from '../actions/index';
 
 const menuMain = {
-    title: "Gowa", href: "#"
+    title: "Gowa", href: "/"
 }
 
 const menuItems = [

@@ -16,7 +16,7 @@ class Navigation extends React.Component {
 
     toggleSideNav(){
         if(!this.state.toggle){
-            document.getElementById("navigation-sidenav").style.width = "60vw";
+            document.getElementById("navigation-sidenav").style.width = "45vw";
             this.setState({ toggle: true });
         }else{
             document.getElementById("navigation-sidenav").style.width = "0";

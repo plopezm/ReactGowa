@@ -1,6 +1,7 @@
 import React from 'react';
 import requireAuth from '../auth/RequireAuth';
 import {connect} from 'react-redux';
+import { browserHistory } from 'react-router';
 
 import {fetchTables} from '../../actions/index';
 
@@ -47,8 +48,9 @@ class TablesOverview extends React.Component {
             return;
         }
         return this.props.tables.map((table) => {
+            const destination = `/show/${table.title}`;
             return (
-                <tr key={table.title}>
+                <tr key={table.title} onClick={() => browserHistory.push(destination)}>
                     <td>{table.title}</td>
                     <td>{this.renderRowStruct(table.columns)}</td>
                 </tr>
