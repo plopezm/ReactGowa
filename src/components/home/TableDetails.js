@@ -58,18 +58,29 @@ class TableDetails extends React.Component {
     }
 
     render() {
-        if(!this.props.table || this.props.table.rows.length == 0){
+        if(!this.props.table){
             return (<section className="container wrap padding16 col100">
                     <div className="container wrap col100 padding16 autoMargin right">
                         <Link to="/"  className="button button_black"> Back </Link>
-                        <Link to={newRowPath} className="button button_black" > New </Link>
                     </div>
-                        <h1 className="col100 aligncenter">Table { this.props.params.id } is empty</h1>
+                        <h1 className="col100 aligncenter">Table { this.props.params.id } does not exists</h1>
                 </section>
             );
         }
 
         const newRowPath = `/new/${this.props.table.title}`;
+
+        if(this.props.table.rows.length == 0){
+            return (<section className="container wrap padding16 col100">
+                    <div className="container wrap col100 padding16 autoMargin right">
+                        <Link to="/"  className="button button_black"> Back </Link>
+                        <Link to={newRowPath} className="button button_black" > New </Link>
+                    </div>
+                    <h1 className="col100 aligncenter">Table { this.props.params.id } is empty</h1>
+                </section>
+            );
+        }
+
 
         return (
             <section className="container wrap padding16 autoMargin responsive_table">
