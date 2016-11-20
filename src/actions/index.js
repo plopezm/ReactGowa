@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SIGN_IN, SIGN_OUT, VALIDATE_SESSION, FETCH_TABLES, GET_TABLE } from './Types';
+import { SIGN_IN, SIGN_OUT, VALIDATE_SESSION, FETCH_TABLES, GET_TABLE_STRUCT, GET_TABLE } from './Types';
 
 const API_URL = "http://localhost:8000/gowa/api";
 
@@ -66,6 +66,23 @@ export function fetchTables(){
                 dispatch({type: FETCH_TABLES, payload: data});
             })
             .catch(() => {
+                dispatch({type: SIGN_OUT});
+            });
+    }
+}
+
+export function getTableStruct(table){
+    const request = axios({
+        method: 'get',
+        url: `${API_URL}/rest/tables/struct/${table}`,
+        withCredentials: true
+    });
+
+    return (dispatch) => {
+        request.then(({data}) =>{
+            dispatch({type: GET_TABLE_STRUCT, payload: data});
+        })
+            .catch((err) => {
                 dispatch({type: SIGN_OUT});
             });
     }

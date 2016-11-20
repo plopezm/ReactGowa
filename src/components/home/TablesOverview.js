@@ -34,11 +34,15 @@ class TablesOverview extends React.Component {
     }
 
     renderRowStruct(columns){
-        return columns.map((col, i) => {
+        if(!columns)
+            return;
+
+        return Object.keys(columns).map((index, i) => {
+            const col = columns[index];
             if(i == 0){
-                return `${col}`;
+                return `${col.name}`;
             }else{
-                return `, ${col}`;
+                return `, ${col.name}`;
             }
         });
     }
@@ -47,7 +51,9 @@ class TablesOverview extends React.Component {
         if(!this.props.tables){
             return;
         }
-        return this.props.tables.map((table) => {
+
+        return Object.keys(this.props.tables).map((index) => {
+            const table = this.props.tables[index];
             const destination = `/show/${table.title}`;
             return (
                 <tr key={table.title} onClick={() => browserHistory.push(destination)}>
@@ -61,12 +67,13 @@ class TablesOverview extends React.Component {
 
     render() {
         return (
-            <section className="container padding16 autoMargin">
+            <section className="container wrap padding16 autoMargin aligncenter responsive_table">
+                <h1>Site Administration</h1>
                 <table className="card_2">
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Details</th>
+                            <th>Columns</th>
                         </tr>
                     </thead>
                     <tbody>

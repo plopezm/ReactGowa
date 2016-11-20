@@ -8,6 +8,7 @@ import App from '../components/app';
 import Login from '../components/login/Login';
 import TablesOverview from '../components/home/TablesOverview';
 import TableDetails from '../components/home/TableDetails';
+import CreateRow from '../components/home/CreateRow';
 
 export default (
     <Route path="/" component={App}>
@@ -15,5 +16,6 @@ export default (
         <Route path="login" component={Login} />
         <Route path="home" component={TablesOverview}/>
         <Route path="show/:id" component={TableDetails}/>
+        <Route path="new/:id" component={CreateRow}/>
     </Route>
 );

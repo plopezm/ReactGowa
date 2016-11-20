@@ -60,7 +60,7 @@ class Login extends React.Component {
                         <input className="col100" type="text" onChange={this.handleUser} placeholder="Username" />
                         <input className="col100 input_control" onChange={this.handlePassword} type="password" placeholder="Password"/>
                         <div className="fullWidth">
-                            <input type="submit" className="fullWidth button_green" value="Sign in" />
+                            <input type="submit" className="button fullWidth button_green" value="Sign in" />
                         </div>
                     </form>
                 </section>

@@ -25,3 +25,7 @@ th {
     background-color: #131313;
     color: white;
 }
+
+.responsive_table{
+    overflow-x:auto;
+}
