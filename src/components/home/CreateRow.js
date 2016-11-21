@@ -31,11 +31,22 @@ class CreateRow extends React.Component {
         // Called when the component is removed
     }
 
+    onSubmit(e){
+        e.preventDefault();
+
+
+    }
+
     renderInputs(){
         return this.props.table.columns.map((col) => {
-           return (
-               <input key={col.name} type="text" className="col100" placeholder={col.name}/>
-           );
+            console.log("[CreateRow - renderInputs]", col);
+
+
+
+            switch(col.ctype){
+                case "string":
+                    return <input key={col.name} type="text" className="col100" placeholder={col.name}/>;
+            }
         });
     }
 
@@ -53,8 +64,9 @@ class CreateRow extends React.Component {
                 <div className="container wrap col100 padding16 autoMargin right">
                     <Link to={back}  className="button button_black"> Back </Link>
                 </div>
-                <form className="padding16 autoMargin card_2 aligncenter">
+                <form className="padding16 autoMargin card_2 aligncenter" onSubmit={this.onSubmit}>
                     <h1>Adding row to {this.props.table.title}</h1>
+                    <hr/>
                     {this.renderInputs()}
                     <input type="submit" className="button button_black" value="Save"/>
                 </form>

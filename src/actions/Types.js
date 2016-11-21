@@ -10,3 +10,5 @@ export const FETCH_TABLES = 'FETCH_TABLES';
 export const GET_TABLE_STRUCT = 'GET_TABLE_STRUCT';
 export const GET_TABLE = 'GET_TABLE';
 
+export const CREATE_ROW = 'CREATE_ROW';
+

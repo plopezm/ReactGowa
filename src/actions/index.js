@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SIGN_IN, SIGN_OUT, VALIDATE_SESSION, FETCH_TABLES, GET_TABLE_STRUCT, GET_TABLE } from './Types';
+import { SIGN_IN, SIGN_OUT, VALIDATE_SESSION, FETCH_TABLES, GET_TABLE_STRUCT, GET_TABLE, CREATE_ROW } from './Types';
 
 const API_URL = "http://localhost:8000/gowa/api";
 
@@ -98,6 +98,24 @@ export function showTable(table){
     return (dispatch) => {
         request.then(({data}) =>{
             dispatch({type: GET_TABLE, payload: data});
+        })
+        .catch((err) => {
+            dispatch({type: SIGN_OUT});
+        });
+    }
+}
+
+export function createRow(table, row){
+    const request = axios({
+        method: 'delete',
+        url: `${API_URL}/rest/tables/add/row/${table}`,
+        withCredentials: true
+    });
+
+    return (dispatch) => {
+        request.then(({data}) =>{
+            console.log("[actions - createRow]: ", data);
+            dispatch({type: CREATE_ROW, payload: data});
         })
         .catch((err) => {
             dispatch({type: SIGN_OUT});
